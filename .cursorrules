@@ -63,6 +63,12 @@
   $ schedule job list
   "
 
+## Agent Usage
+- Use agent commands (run_terminal_command) directly for testing, not text examples
+- Only call agent commands once per test case
+- Don't mix agent commands with text examples of commands
+- When showing multiple related commands, explain the sequence first, then run them one at a time
+
 ## Documentation
 - Use markdown for documentation
 - Keep examples up to date

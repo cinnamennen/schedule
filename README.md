@@ -80,10 +80,25 @@ yarn dev
 
 ## Usage
 
+Run commands using `yarn start`:
+
 ```bash
-# Command structure (preliminary)
-schedule [command] [options]
+# Add a job
+yarn start job add "Large Banner" "2h30m"
+# or with named arguments
+yarn start job add -n "Large Banner" -d "2h30m"
+
+# List all jobs
+yarn start job list
+
+# Edit a job
+yarn start job edit <id> -n "New Name" -d "3h"
+
+# Remove a job
+yarn start job remove <id>
 ```
+
+For development, use `yarn dev` to run with watch mode.
 
 ## Development Status
 

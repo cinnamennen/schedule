@@ -1,18 +1,10 @@
 {
   "name": "schedule",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "bin": {
-    "schedule": "./dist/index.js"
-  },
-  "author": "Caleb Mennen",
-  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "clean": "rm -rf dist",
-    "prepare": "yarn build",
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "lint:ts": "eslint . --ext .ts",
     "lint:ts:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
@@ -29,8 +21,7 @@
     "@typescript-eslint/parser": "^8.17.0",
     "eslint": "^9.16.0",
     "prettier": "^3.4.2",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.7.0",
     "typescript": "^5.7.2"
   },
   "dependencies": {
@@ -39,6 +30,5 @@
     "parse-duration": "^1.1.0",
     "terminal-kit": "^3.0.1",
     "yargs": "^17.7.2"
-  },
-  "type": "module"
+  }
 }

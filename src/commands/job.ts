@@ -21,29 +21,27 @@ const job = {
               type: 'string',
               describe: 'Duration of the job (e.g., "1h30m", "45m")',
             })
-            .option('name', {
-              alias: 'n',
+            .option('n', {
+              alias: 'name',
               type: 'string',
               describe: 'Name of the print job',
-              conflicts: ['name'],
             })
-            .option('duration', {
-              alias: 'd',
+            .option('d', {
+              alias: 'duration',
               type: 'string',
               describe: 'Duration of the job (e.g., "1h30m", "45m")',
-              conflicts: ['duration'],
             })
             .check((argv) => {
-              const name = argv.name || argv._[1];
-              const duration = argv.duration || argv._[2];
+              const name = argv.n || argv.name || argv._[1];
+              const duration = argv.d || argv.duration || argv._[2];
               if (!name) throw new Error('Job name is required');
               if (!duration) throw new Error('Job duration is required');
               return true;
             }),
         handler: async (argv) => {
           try {
-            const name = (argv.name || argv._[1]) as string;
-            const durationStr = (argv.duration || argv._[2]) as string;
+            const name = (argv.n || argv.name || argv._[1]) as string;
+            const durationStr = (argv.d || argv.duration || argv._[2]) as string;
             const duration = parseToMinutes(durationStr);
             const job = await dbService.addJob(name, duration);
             console.log(
@@ -124,21 +122,19 @@ const job = {
               type: 'string',
               describe: 'New duration for the job (e.g., "1h30m", "45m")',
             })
-            .option('name', {
-              alias: 'n',
+            .option('n', {
+              alias: 'name',
               type: 'string',
               describe: 'New name for the job',
-              conflicts: ['name'],
             })
-            .option('duration', {
-              alias: 'd',
+            .option('d', {
+              alias: 'duration',
               type: 'string',
               describe: 'New duration for the job (e.g., "1h30m", "45m")',
-              conflicts: ['duration'],
             })
             .check((argv) => {
-              const hasName = argv.name || argv._[2];
-              const hasDuration = argv.duration || argv._[3];
+              const hasName = argv.n || argv.name || argv._[2];
+              const hasDuration = argv.d || argv.duration || argv._[3];
               if (!hasName && !hasDuration) {
                 throw new Error('At least one of name or duration must be specified');
               }
@@ -147,8 +143,8 @@ const job = {
         handler: async (argv) => {
           try {
             const updates: { name?: string; duration?: number } = {};
-            const name = argv.name || argv._[2];
-            const durationStr = argv.duration || argv._[3];
+            const name = argv.n || argv.name || argv._[2];
+            const durationStr = argv.d || argv.duration || argv._[3];
 
             if (name) updates.name = name as string;
             if (durationStr) updates.duration = parseToMinutes(durationStr as string);
