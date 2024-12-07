@@ -95,3 +95,8 @@ Currently in initial development phase. Core features and data models being defi
 - Extended visualization options
 - Schedule export/import
 - Historical analytics
+- Possible Web API Integration (if feasible with printer systems):
+  - Potential for remote job ingestion
+  - Schedule synchronization if supported
+  - Integration with existing printer management systems
+  - Note: API integration depends on printer system capabilities and protocols

@@ -1,6 +1,10 @@
 /**
  * Database service
  * Handles all interactions with LowDB
+ * 
+ * Note: While this service currently uses local storage, the interface is designed
+ * to be implementation-agnostic. If printer system APIs become available in the future,
+ * this could potentially be adapted, but we make no assumptions about such capabilities.
  */
 
 import { Low } from 'lowdb';
@@ -20,6 +24,11 @@ const DEFAULT_CONFIG: DbSchema = {
   },
 };
 
+/**
+ * Database service using local storage
+ * Interface is kept generic to maintain flexibility for future enhancements,
+ * but core functionality assumes local operation
+ */
 class DatabaseService {
   private db: Low<DbSchema>;
   private static instance: DatabaseService;
