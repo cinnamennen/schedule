@@ -5,6 +5,7 @@ A CLI tool for optimizing print job schedules around operator availability and m
 ## Overview
 
 This tool helps printing companies optimize their job queue by:
+
 - Minimizing total queue execution time
 - Working around operator downtime periods
 - Accounting for machine setup/teardown times
@@ -13,6 +14,7 @@ This tool helps printing companies optimize their job queue by:
 ## Core Features
 
 ### Job Management
+
 - Create and manage print jobs with:
   - Job name
   - Duration (flexible time units: minutes, hours, days)
@@ -21,6 +23,7 @@ This tool helps printing companies optimize their job queue by:
 - All times stored in a consistent base unit internally
 
 ### Downtime Management
+
 - Define periods when operators are unavailable:
   - Simple daily patterns (e.g., lunch breaks)
   - Weekly patterns (e.g., weekends)
@@ -28,12 +31,14 @@ This tool helps printing companies optimize their job queue by:
 - Easy modification of downtime schedules
 
 ### Machine Configuration
+
 - Single machine setup
 - Configuration for:
   - Setup time requirements
   - Teardown/spindown time requirements
 
 ### Schedule Optimization
+
 - Global queue optimization for minimal total execution time
 - Visualization of schedules with:
   - Timeline view of jobs and downtime
@@ -42,6 +47,7 @@ This tool helps printing companies optimize their job queue by:
 - Future support for resource-based job grouping
 
 ### Data Storage
+
 - Local database using LowDB
 - Persistent storage of:
   - Jobs and their details

@@ -32,4 +32,4 @@ export interface DbSchema {
   jobs: Job[];
   downtimePetterns: DowntimePattern[];
   machineConfig: MachineConfig;
-} 
+}

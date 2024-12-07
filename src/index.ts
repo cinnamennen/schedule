@@ -32,4 +32,4 @@ yargs(hideBin(process.argv))
     process.exit(1);
   })
   .strict()
-  .parse(); 
+  .parse();
