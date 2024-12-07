@@ -1,7 +1,7 @@
 # Print Job Scheduler
 
-[![CI](https://github.com/YOUR_USERNAME/schedule/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/schedule/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/YOUR_USERNAME/schedule/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/schedule)
+[![CI](https://github.com/cinnamennen/schedule/actions/workflows/ci.yml/badge.svg)](https://github.com/cinnamennen/schedule/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/cinnamennen/schedule/branch/main/graph/badge.svg)](https://codecov.io/gh/cinnamennen/schedule)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A CLI tool for optimizing print job schedules around operator availability and machine constraints.
@@ -28,7 +28,7 @@ A CLI tool for optimizing print job schedules around operator availability and m
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/schedule.git
+git clone https://github.com/cinnamennen/schedule.git
 
 # Install dependencies
 yarn install
