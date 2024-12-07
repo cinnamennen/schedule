@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+/**
+ * Print Job Scheduler
+ * CLI tool for optimizing print job schedules
+ */
+
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import chalk from 'chalk';
