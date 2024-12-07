@@ -46,8 +46,8 @@ const job = {
             const job = await dbService.addJob(name, duration);
             console.log(
               chalk.green(
-                `Added job "${job.name}" (${formatMinutes(job.duration)}) with ID: ${chalk.blue(job.id)}`
-              )
+                `Added job "${job.name}" (${formatMinutes(job.duration)}) with ID: ${chalk.blue(job.id)}`,
+              ),
             );
           } catch (error) {
             console.error(chalk.red(`Error: ${(error as Error).message}`));
@@ -71,7 +71,7 @@ const job = {
               console.log(
                 `${chalk.green(job.name)} (${chalk.blue(job.id)})
   Duration: ${chalk.yellow(formatMinutes(job.duration))}
-  Created: ${chalk.dim(new Date(job.createdAt).toLocaleString())}`
+  Created: ${chalk.dim(new Date(job.createdAt).toLocaleString())}`,
               );
               console.log(chalk.dim('─'.repeat(50)));
             });
@@ -97,9 +97,7 @@ const job = {
             }
 
             await dbService.removeJob(argv.id as string);
-            console.log(
-              chalk.yellow(`Removed job "${job.name}" (${formatMinutes(job.duration)})`)
-            );
+            console.log(chalk.yellow(`Removed job "${job.name}" (${formatMinutes(job.duration)})`));
           } catch (error) {
             console.error(chalk.red(`Error: ${(error as Error).message}`));
           }
@@ -152,8 +150,8 @@ const job = {
             const job = await dbService.updateJob(argv.id as string, updates);
             console.log(
               chalk.green(
-                `Updated job "${job.name}" (${formatMinutes(job.duration)}) with ID: ${chalk.blue(job.id)}`
-              )
+                `Updated job "${job.name}" (${formatMinutes(job.duration)}) with ID: ${chalk.blue(job.id)}`,
+              ),
             );
           } catch (error) {
             console.error(chalk.red(`Error: ${(error as Error).message}`));
@@ -164,4 +162,4 @@ const job = {
   handler: () => {},
 } satisfies CommandModule;
 
-export default job; 
+export default job;

@@ -1,7 +1,7 @@
 /**
  * Database service
  * Handles all interactions with LowDB
- * 
+ *
  * Note: While this service currently uses local storage, the interface is designed
  * to be implementation-agnostic. If printer system APIs become available in the future,
  * this could potentially be adapted, but we make no assumptions about such capabilities.
@@ -30,7 +30,10 @@ const DB_DIR = join(homedir(), '.schedule-cli');
 const DB_PATH = join(DB_DIR, 'db.json');
 
 class DatabaseError extends Error {
-  constructor(message: string, public cause?: Error) {
+  constructor(
+    message: string,
+    public cause?: Error,
+  ) {
     super(message);
     this.name = 'DatabaseError';
   }
@@ -68,7 +71,7 @@ class DatabaseService {
     try {
       // Ensure database directory exists
       await mkdir(DB_DIR, { recursive: true });
-      
+
       // Initialize database with defaults if it doesn't exist
       try {
         await this.db.read();
@@ -95,7 +98,7 @@ class DatabaseService {
     } catch (error) {
       throw new DatabaseError(
         'Failed to initialize database',
-        error instanceof Error ? error : undefined
+        error instanceof Error ? error : undefined,
       );
     }
   }
@@ -104,7 +107,7 @@ class DatabaseService {
 
   public async addJob(name: string, duration: number): Promise<Job> {
     await this.ensureInitialized();
-    
+
     const job: Job = {
       id: randomUUID(),
       name,
@@ -118,10 +121,7 @@ class DatabaseService {
       await this.db.write();
       return job;
     } catch (error) {
-      throw new DatabaseError(
-        'Failed to add job',
-        error instanceof Error ? error : undefined
-      );
+      throw new DatabaseError('Failed to add job', error instanceof Error ? error : undefined);
     }
   }
 
@@ -135,9 +135,12 @@ class DatabaseService {
     return this.db.data.jobs.find((job) => job.id === id);
   }
 
-  public async updateJob(id: string, updates: Partial<Pick<Job, 'name' | 'duration'>>): Promise<Job> {
+  public async updateJob(
+    id: string,
+    updates: Partial<Pick<Job, 'name' | 'duration'>>,
+  ): Promise<Job> {
     await this.ensureInitialized();
-    
+
     const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
     if (jobIndex === -1) {
       throw new DatabaseError(`Job not found: ${id}`);
@@ -155,16 +158,13 @@ class DatabaseService {
       await this.db.write();
       return updatedJob;
     } catch (error) {
-      throw new DatabaseError(
-        'Failed to update job',
-        error instanceof Error ? error : undefined
-      );
+      throw new DatabaseError('Failed to update job', error instanceof Error ? error : undefined);
     }
   }
 
   public async removeJob(id: string): Promise<void> {
     await this.ensureInitialized();
-    
+
     const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
     if (jobIndex === -1) {
       throw new DatabaseError(`Job not found: ${id}`);
@@ -174,10 +174,7 @@ class DatabaseService {
       this.db.data.jobs.splice(jobIndex, 1);
       await this.db.write();
     } catch (error) {
-      throw new DatabaseError(
-        'Failed to remove job',
-        error instanceof Error ? error : undefined
-      );
+      throw new DatabaseError('Failed to remove job', error instanceof Error ? error : undefined);
     }
   }
 }

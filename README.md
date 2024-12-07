@@ -1,6 +1,7 @@
 # Print Job Scheduler
 
-A CLI tool for optimizing print job schedules around operator availability and machine constraints.
+A CLI tool for optimizing print job schedules around operator availability and
+machine constraints.
 
 ## Overview
 
@@ -9,7 +10,8 @@ This tool helps printing companies optimize their job queue by:
 - Minimizing total queue execution time
 - Working around operator downtime periods
 - Accounting for machine setup/teardown times
-- Providing alternative schedules that trade execution time for operational flexibility
+- Providing alternative schedules that trade execution time for operational
+  flexibility
 
 ## Core Features
 
@@ -102,7 +104,8 @@ For development, use `yarn dev` to run with watch mode.
 
 ## Development Status
 
-Currently in initial development phase. Core features and data models being defined.
+Currently in initial development phase. Core features and data models being
+defined.
 
 ## Future Enhancements
 

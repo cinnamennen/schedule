@@ -95,4 +95,5 @@ Currently awaiting decision on command interface style:
 - Single-line commands
 - Hybrid approach
 
-After this decision, we'll begin implementing Phase 1 starting with the job input commands.
+After this decision, we'll begin implementing Phase 1 starting with the job
+input commands.
