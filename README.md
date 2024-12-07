@@ -39,47 +39,47 @@ A CLI tool for optimizing print job schedules around operator availability and m
 git clone https://github.com/cinnamennen/schedule.git
 
 # Install dependencies
-yarn install
+pnpm install
 
 # Build the project
-yarn build
+pnpm build
 ```
 
 ## Usage
 
 ```bash
 # Add a job
-yarn start job add "Large Banner" "2h30m"
+pnpm start job add "Large Banner" "2h30m"
 # or with named arguments
-yarn start job add -n "Large Banner" -d "2h30m"
+pnpm start job add -n "Large Banner" -d "2h30m"
 
 # List all jobs
-yarn start job list
+pnpm start job list
 
 # Edit a job
-yarn start job edit <id> -n "New Name" -d "3h"
+pnpm start job edit <id> -n "New Name" -d "3h"
 
 # Remove a job
-yarn start job remove <id>
+pnpm start job remove <id>
 ```
 
 ## Development
 
 ```bash
 # Run in development mode with watch
-yarn dev
+pnpm dev
 
 # Run tests
-yarn test
+pnpm test
 
 # Run tests with coverage
-yarn test:coverage
+pnpm test:coverage
 
 # Run linting and type checking
-yarn check
+pnpm check
 
 # Fix linting and formatting issues
-yarn fix
+pnpm fix
 ```
 
 ## Contributing
