@@ -4,7 +4,7 @@
   "proseWrap": "always",
   "overrides": [
     {
-      "files": ["*.md", ".cursorrules"],
+      "files": ["**/*.md", ".config/.cursorrules"],
       "options": {
         "printWidth": 80,
         "proseWrap": "always",

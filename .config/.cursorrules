@@ -94,8 +94,10 @@
 
 - Ensure all files have consistent formatting
 - Keep configuration in sync across:
-  - `.prettierrc` for Prettier rules
+  - `.config/.prettierrc` for Prettier rules
   - `.vscode/settings.json` for VS Code settings
+  - `.config/.markdownlint-cli2.jsonc` for Markdown linting
+  - `.config/.eslintrc.json` for ESLint rules
   - `package.json` for lint-staged rules
 - When adding new file types:
   1. Add to Prettier config if needed
