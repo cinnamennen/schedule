@@ -7,6 +7,7 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
+    "build": "tsc --project .config/tsconfig.json",
     "lint:ts": "eslint --config .config/eslint.config.js \"**/*.ts\"",
     "lint:ts:fix": "eslint --config .config/eslint.config.js \"**/*.ts\" --fix",
     "lint:md": "markdownlint-cli2 \"docs/**/*.md\" \".config/.cursorrules\"",

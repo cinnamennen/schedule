@@ -16,11 +16,13 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
-  "[json]": {
+  "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   },
   "[shellscript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -31,7 +33,9 @@
     "*.yaml": "yaml",
     "*.yml": "yaml",
     "*.sh": "shellscript",
-    ".cursorrules": "markdown"
+    ".cursorrules": "markdown",
+    "tsconfig.json": "jsonc",
+    "tsconfig.*.json": "jsonc"
   },
   "[cursorrules]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",

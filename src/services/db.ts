@@ -132,7 +132,7 @@ class DatabaseService {
 
   public async getJob(id: string): Promise<Job | undefined> {
     await this.ensureInitialized();
-    return this.db.data.jobs.find((job) => job.id === id);
+    return this.db.data.jobs.find((job: Job) => job.id === id);
   }
 
   public async updateJob(
@@ -141,7 +141,7 @@ class DatabaseService {
   ): Promise<Job> {
     await this.ensureInitialized();
 
-    const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
+    const jobIndex = this.db.data.jobs.findIndex((job: Job) => job.id === id);
     if (jobIndex === -1) {
       throw new DatabaseError(`Job not found: ${id}`);
     }
@@ -165,7 +165,7 @@ class DatabaseService {
   public async removeJob(id: string): Promise<void> {
     await this.ensureInitialized();
 
-    const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
+    const jobIndex = this.db.data.jobs.findIndex((job: Job) => job.id === id);
     if (jobIndex === -1) {
       throw new DatabaseError(`Job not found: ${id}`);
     }

@@ -6,6 +6,14 @@
 
 A CLI tool for optimizing print job schedules around operator availability and machine constraints.
 
+## Quality Standards
+
+- TypeScript for type safety
+- ESLint for code quality
+- Prettier for consistent formatting
+- 80% code coverage requirement
+- Automated CI/CD pipeline
+
 ## Features
 
 - Job Management
