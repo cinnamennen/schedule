@@ -7,16 +7,20 @@
   "scripts": {
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
-    "lint:ts": "eslint \"**/*.ts\"",
-    "lint:ts:fix": "eslint \"**/*.ts\" --fix",
+    "lint:ts": "eslint --config .config/eslint.config.js \"**/*.ts\"",
+    "lint:ts:fix": "eslint --config .config/eslint.config.js \"**/*.ts\" --fix",
     "lint:md": "markdownlint-cli2 \"docs/**/*.md\" \".config/.cursorrules\"",
     "lint:md:fix": "markdownlint-cli2 --fix \"docs/**/*.md\" \".config/.cursorrules\"",
     "format": "prettier --config .config/.prettierrc --write .",
     "format:check": "prettier --config .config/.prettierrc --check .",
     "type-check": "tsc --noEmit --project .config/tsconfig.json",
-    "check": "yarn lint:ts && yarn lint:md && yarn format:check && yarn type-check",
+    "check": "yarn lint:ts && yarn lint:md && yarn format:check && yarn type-check && yarn test:coverage",
     "fix": "yarn lint:ts:fix && yarn lint:md:fix && yarn format",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage --coverage.thresholds.lines=80 --coverage.thresholds.functions=80 --coverage.thresholds.branches=80 --coverage.thresholds.statements=80",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
@@ -24,14 +28,17 @@
     "@types/yargs": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
+    "@vitest/coverage-v8": "^2.1.8",
     "eslint": "^9.16.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "markdownlint-cli2": "^0.15.0",
     "markdownlint-cli2-formatter-default": "^0.0.5",
+    "mock-fs": "^5.4.1",
     "prettier": "^3.4.2",
     "tsx": "^4.7.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "dependencies": {
     "chalk": "^5.3.0",
@@ -42,7 +49,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "eslint --fix",
+      "eslint --config .config/eslint.config.js --fix",
       "prettier --config .config/.prettierrc --write"
     ],
     "**/*.{json,md,.cursorrules}": [
