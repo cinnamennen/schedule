@@ -1,0 +1,15 @@
+{
+  "name": "schedule",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Caleb Mennen",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
