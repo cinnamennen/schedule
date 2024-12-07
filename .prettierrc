@@ -4,10 +4,11 @@
   "proseWrap": "always",
   "overrides": [
     {
-      "files": "*.md",
+      "files": ["*.md", ".cursorrules"],
       "options": {
         "printWidth": 80,
-        "proseWrap": "always"
+        "proseWrap": "always",
+        "parser": "markdown"
       }
     }
   ]

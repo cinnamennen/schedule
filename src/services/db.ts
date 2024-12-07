@@ -75,7 +75,7 @@ class DatabaseService {
       // Initialize database with defaults if it doesn't exist
       try {
         await this.db.read();
-      } catch (error) {
+      } catch {
         // If file doesn't exist or is invalid, use defaults
         this.db.data = DEFAULT_CONFIG;
         await this.db.write();
