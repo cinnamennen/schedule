@@ -101,7 +101,7 @@
   - `package.json` for lint-staged rules
 - When adding new file types:
   1. Add to Prettier config if needed
-  2. Update VS Code file associations
-  3. Add VS Code language-specific settings (e.g., `"[cursorrules]"` for `.cursorrules` files)
+  2. Update VS Code file associations (e.g., `".cursorrules": "markdown"`)
+  3. Add VS Code language-specific settings (e.g., `"[cursorrules]"` without the dot)
   4. Update lint-staged patterns
   5. Test formatting works with both `yarn format` and on save in VS Code
