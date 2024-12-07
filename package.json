@@ -2,7 +2,6 @@
   "name": "schedule",
   "version": "1.0.0",
   "type": "module",
-  "prettier": ".config/.prettierrc",
   "markdownlint-cli2": ".config/.markdownlint-cli2.jsonc",
   "scripts": {
     "start": "tsx src/index.ts",
@@ -11,8 +10,8 @@
     "lint:ts:fix": "eslint \"**/*.ts\" --fix",
     "lint:md": "markdownlint-cli2 \"docs/**/*.md\" \".config/.cursorrules\"",
     "lint:md:fix": "markdownlint-cli2 --fix \"docs/**/*.md\" \".config/.cursorrules\"",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "prettier --config .config/.prettierrc --write .",
+    "format:check": "prettier --config .config/.prettierrc --check .",
     "type-check": "tsc --noEmit --project .config/tsconfig.json",
     "check": "yarn lint:ts && yarn lint:md && yarn format:check && yarn type-check",
     "fix": "yarn lint:ts:fix && yarn lint:md:fix && yarn format",
@@ -43,10 +42,10 @@
   "lint-staged": {
     "**/*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --config .config/.prettierrc --write"
     ],
     "**/*.{json,md,.cursorrules}": [
-      "prettier --write"
+      "prettier --config .config/.prettierrc --write"
     ]
   }
 }
