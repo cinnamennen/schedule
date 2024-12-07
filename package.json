@@ -2,6 +2,7 @@
   "name": "schedule",
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "markdownlint-cli2": ".config/.markdownlint-cli2.jsonc",
   "scripts": {
     "start": "tsx src/index.ts",
