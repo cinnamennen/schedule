@@ -8,7 +8,8 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import chalk from 'chalk';
-import parseDuration from 'parse-duration';
+import job from './commands/job';
+import { dbService } from './services/db';
 
 const log = {
   info: (msg: string): void => console.log(chalk.blue(msg)),
@@ -17,14 +18,20 @@ const log = {
   error: (msg: string): void => console.log(chalk.red(msg)),
 };
 
+// Initialize database
+await dbService.initialize().catch((err) => {
+  log.error(`Failed to initialize database: ${err.message}`);
+  process.exit(1);
+});
+
 yargs(hideBin(process.argv))
   .scriptName(chalk.cyan('schedule'))
   .usage(`${chalk.cyan('$0')} <cmd> [args]`)
+  .command(job)
   .version()
   .alias('v', 'version')
   .help()
   .alias('h', 'help')
-  // Commands will be added here
   .demandCommand(1, chalk.yellow('You need to specify a command'))
   .fail((msg: string, err: Error) => {
     if (err) log.error(err.message);

@@ -1,0 +1,60 @@
+# Cursor Rules
+# Project-specific preferences and learnings that should be followed
+
+## TypeScript Usage
+- Prefer `satisfies` over type annotations when the type can be inferred
+  ```ts
+  // ❌ Don't
+  const config: Config = { foo: 'bar' };
+  
+  // ✅ Do
+  const config = { foo: 'bar' } satisfies Config;
+  ```
+- Use TypeScript for all code
+- Prefer interfaces over types
+- Avoid enums; use const maps instead
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError)
+
+## Code Style and Structure
+- Write concise, technical TypeScript code with accurate examples
+- Use functional and declarative programming patterns; avoid classes except when truly needed
+- Prefer iteration and modularization over code duplication
+- Avoid more than 3 levels of nesting in code
+- Use arrow functions
+- Use concise syntax for simple statements
+
+## Project Structure
+- Commands directory for CLI commands
+- Services directory for core functionality
+- Utils directory for shared utilities
+- Types directory for TypeScript types and interfaces
+
+## Error Handling and Validation
+- Handle errors and edge cases early
+- Use early returns for error conditions
+- Use guard clauses to avoid deeply nested if statements
+- Implement proper error logging and user-friendly messages
+- Place the happy path last in the function
+- Avoid unnecessary else statements; use if-return pattern
+- Use custom error types for consistent error handling
+
+## CLI Design
+- Support both positional and named arguments for flexibility
+- Provide clear, colorful feedback for all operations
+- Use consistent command patterns across the application
+- Include helpful examples in help text
+- Validate input early and provide clear error messages
+
+## Development Process
+- Think step-by-step before implementing
+- Focus on readability over premature optimization
+- Fully implement requested functionality
+- Leave no TODOs or placeholders
+- Be explicit about file names and paths
+- Write clear, concise documentation
+
+## Documentation
+- Use markdown for documentation
+- Keep examples up to date
+- Include both simple and advanced usage examples
+- Document both positional and named argument styles

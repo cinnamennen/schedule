@@ -11,7 +11,8 @@ import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { join } from 'path';
 import { homedir } from 'os';
-import type { DbSchema } from '../types';
+import { randomUUID } from 'crypto';
+import type { DbSchema, Job } from '../types';
 
 // Default configuration
 const DEFAULT_CONFIG: DbSchema = {
@@ -56,7 +57,57 @@ class DatabaseService {
     await this.db.write();
   }
 
-  // Add more methods here as we implement features
+  // Job Management Methods
+
+  public async addJob(name: string, duration: number): Promise<Job> {
+    const job: Job = {
+      id: randomUUID(),
+      name,
+      duration,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    this.db.data.jobs.push(job);
+    await this.db.write();
+    return job;
+  }
+
+  public async getJobs(): Promise<Job[]> {
+    return this.db.data.jobs;
+  }
+
+  public async getJob(id: string): Promise<Job | undefined> {
+    return this.db.data.jobs.find((job) => job.id === id);
+  }
+
+  public async updateJob(id: string, updates: Partial<Pick<Job, 'name' | 'duration'>>): Promise<Job> {
+    const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
+    if (jobIndex === -1) {
+      throw new Error(`Job not found: ${id}`);
+    }
+
+    const job = this.db.data.jobs[jobIndex];
+    const updatedJob: Job = {
+      ...job,
+      ...updates,
+      updatedAt: new Date().toISOString(),
+    };
+
+    this.db.data.jobs[jobIndex] = updatedJob;
+    await this.db.write();
+    return updatedJob;
+  }
+
+  public async removeJob(id: string): Promise<void> {
+    const jobIndex = this.db.data.jobs.findIndex((job) => job.id === id);
+    if (jobIndex === -1) {
+      throw new Error(`Job not found: ${id}`);
+    }
+
+    this.db.data.jobs.splice(jobIndex, 1);
+    await this.db.write();
+  }
 }
 
 // Export singleton instance
