@@ -52,6 +52,16 @@
 - Leave no TODOs or placeholders
 - Be explicit about file names and paths
 - Write clear, concise documentation
+- Provide test commands after implementing features
+  ```bash
+  # ❌ Don't just implement without examples
+  "Feature implemented!"
+  
+  # ✅ Do provide test commands
+  "Feature implemented! Test with:
+  $ schedule job add 'Test Job' '2h30m'
+  $ schedule job list
+  "
 
 ## Documentation
 - Use markdown for documentation
