@@ -7,11 +7,13 @@
     "dev": "tsx watch src/index.ts",
     "lint:ts": "eslint \"**/*.ts\"",
     "lint:ts:fix": "eslint \"**/*.ts\" --fix",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \".cursorrules\"",
+    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \".cursorrules\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
-    "check": "yarn lint:ts && yarn format:check && yarn type-check",
-    "fix": "yarn lint:ts:fix && yarn format",
+    "check": "yarn lint:ts && yarn lint:md && yarn format:check && yarn type-check",
+    "fix": "yarn lint:ts:fix && yarn lint:md:fix && yarn format",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -23,6 +25,8 @@
     "eslint": "^9.16.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
+    "markdownlint-cli2": "^0.15.0",
+    "markdownlint-cli2-formatter-default": "^0.0.5",
     "prettier": "^3.4.2",
     "tsx": "^4.7.0",
     "typescript": "^5.7.2"
@@ -40,6 +44,7 @@
       "prettier --write"
     ],
     "*.{json,md,.cursorrules}": [
+      "yarn lint:md:fix",
       "prettier --write"
     ]
   }
